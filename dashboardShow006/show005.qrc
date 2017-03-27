@@ -1,0 +1,100 @@
+<RCC>
+    <qresource prefix="/qml">
+        <file>qml/content/qmldir</file>
+        <file>qml/content/Fps.qml</file>
+        <file>qml/mainViewer.qml</file>
+        <file>qml/content/DigitValue.qml</file>
+        <file>qml/content/SplashPanel.qml</file>
+        <file>qml/content/DashboardPanel.qml</file>
+        <file>qml/content/DataPanel.qml</file>
+        <file>qml/content/MidShow.qml</file>
+        <file>qml/content/Shadow.qml</file>
+        <file>qml/turnImage.qml</file>
+    </qresource>
+    <qresource prefix="/splashPanel">
+        <file>images/splashPanel/openBg.png</file>
+        <file>images/splashPanel/logo.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>images/midBg.png</file>
+        <file>images/speedPoint.png</file>
+        <file>images/speedBar.png</file>
+        <file>images/rpmPoint.png</file>
+        <file>images/rpmBar.png</file>
+        <file>images/rightBg.png</file>
+        <file>images/maohao.png</file>
+        <file>images/leftBg.png</file>
+        <file>images/globalBg.png</file>
+        <file>images/gearR.png</file>
+        <file>images/gearP.png</file>
+        <file>images/gearN.png</file>
+        <file>images/gearD.png</file>
+        <file>images/waterTempBg.png</file>
+        <file>images/waterTempBar.png</file>
+        <file>images/upLine.png</file>
+        <file>images/rightLine.png</file>
+        <file>images/oilBg.png</file>
+        <file>images/oilBar.png</file>
+        <file>images/mileBg.png</file>
+        <file>images/mileBar.png</file>
+        <file>images/leftLine.png</file>
+        <file>images/downLine.png</file>
+        <file>images/carInfo.png</file>
+        <file>images/milePoint.png</file>
+        <file>images/oilPoint.png</file>
+        <file>images/tempure.png</file>
+        <file>images/time.png</file>
+        <file>images/xuhang .png</file>
+        <file>images/samllTrip.png</file>
+        <file>images/totalTrip.png</file>
+    </qresource>
+    <qresource prefix="/speedNum">
+        <file>images/speedNum/0.png</file>
+        <file>images/speedNum/1.png</file>
+        <file>images/speedNum/2.png</file>
+        <file>images/speedNum/3.png</file>
+        <file>images/speedNum/4.png</file>
+        <file>images/speedNum/5.png</file>
+        <file>images/speedNum/6.png</file>
+        <file>images/speedNum/7.png</file>
+        <file>images/speedNum/8.png</file>
+        <file>images/speedNum/9.png</file>
+    </qresource>
+    <qresource prefix="/gear">
+        <file>images/gear/D.png</file>
+        <file>images/gear/N.png</file>
+        <file>images/gear/P.png</file>
+        <file>images/gear/R.png</file>
+    </qresource>
+    <qresource prefix="/midShow">
+        <file>images/midShow/carDoorLamp.png</file>
+        <file>images/midShow/frontFogLamp.png</file>
+        <file>images/midShow/HighLamp.png</file>
+        <file>images/midShow/leftLamp.png</file>
+        <file>images/midShow/navi.png</file>
+        <file>images/midShow/naviMenu.png</file>
+        <file>images/midShow/positionLamp.png</file>
+        <file>images/midShow/rearFogLamp.png</file>
+        <file>images/midShow/rightLamp.png</file>
+        <file>images/midShow/runningInfo.png</file>
+        <file>images/midShow/runningInfoMenu.png</file>
+        <file>images/midShow/set.png</file>
+        <file>images/midShow/setMenu.png</file>
+        <file>images/midShow/tirePress.png</file>
+        <file>images/midShow/tirePressLamp.png</file>
+        <file>images/midShow/tirePressMenu.png</file>
+    </qresource>
+    <qresource prefix="/turnImage">
+        <file>turnImages/pic51.png</file>
+        <file>turnImage2/curve.png</file>
+        <file>turnImage2/flag.png</file>
+        <file>turnImage2/left.png</file>
+        <file>turnImage2/leftY.png</file>
+        <file>turnImage2/pianli.png</file>
+        <file>turnImage2/right.png</file>
+        <file>turnImage2/rightY.png</file>
+        <file>turnImage2/ring.png</file>
+        <file>turnImage2/straight.png</file>
+        <file>turnImage2/tunnel.png</file>
+    </qresource>
+</RCC>

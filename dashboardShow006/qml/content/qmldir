@@ -1,0 +1,13 @@
+mainViewer mainViewer.qml
+BatteryPanel BatteryPanel.qml
+CoolantTempPanel CoolantTempPanel.qml
+DashboardPanel DashboardPanel.qml
+DigitValue DigitValue.qml
+GlobalPanel GlobalPanel.qml
+IndicatorLamp IndicatorLamp.qml
+MainPanel MainPanel.qml
+OilPanel OilPanel.qml
+OilPressurePanel OilPressurePanel.qml
+RpmPanel RpmPanel.qml
+SpeedPanel SpeedPanel.qml
+SplashPanel SplashPanel.qml
