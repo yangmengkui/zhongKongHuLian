@@ -119,22 +119,61 @@ AirLink::AirLink(const QString &serialDev, QObject *parent) :
     connect (m_serial, SIGNAL(serialChanged(Data)), this, SLOT(getSerial(Data)));
 
     m_id_turn = 0;
-    m_speed = 0;
+    m_speed = 100;
+
+    flagSpeed = false;
+    flagSpeedPause_2s = 0;
+
     m_stalls = 2;
     m_turnDistance = 0;
     m_destDistance = 0;
     flagCount = 0;
     m_carInfo_flag = true ;
+
+    sendToHudC.release();
+
     QTimer *time2s = new QTimer;
-    time2s->start(2000);
+    time2s->start(1200);
     connect(time2s,SIGNAL(timeout()),this,SLOT(serialReadyread()));
+
+//    QTimer *time_100ms = new QTimer;
+//    time_100ms->start(100);
+//    connect(time_100ms,SIGNAL(timeout()),this,SLOT(speedChangedSlot()));
 //#ifndef SERIAL_MODE
     initNetWork();
 //#endif
+
 }
+
+void AirLink::speedChangedSlot()
+{
+    if(m_speed == 100)
+    speedFlag_100_126 = false;
+    if(!speedFlag_100_126)
+        m_speed++;
+    if(m_speed == 126)
+        speedFlag_100_126 = true;
+    if(speedFlag_100_126)
+        m_speed--;
+    emit speedChanged();
+    sendToHudC.acquire();
+    sendToHud();
+    sendToHudC.release();
+}
+
+
 
 void AirLink::serialReadyread()
 {
+    flagSpeedPause_2s ++;
+    if(flagSpeedPause_2s == 2)
+    {
+    QTimer *time_100ms = new QTimer;
+    time_100ms->start(150);
+    connect(time_100ms,SIGNAL(timeout()),this,SLOT(speedChangedSlot()));
+    }
+//    flagSpeedPause_2s = true;
+
     flagCount++;
      if(flagCount > 1&& m_carInfo_flag == false)
      {
@@ -192,10 +231,12 @@ void AirLink::getSerial(Data data)
 //         qDebug() << "m_turnRoad" << m_turnRoad << endl ;
         emit turnRoadChanged();
     }
-    m_speed = 100;
+//    m_speed = 100;
     m_stalls = 2;
 //    m_turnDistance = 2000;
+    sendToHudC.acquire();
     sendToHud();
+    sendToHudC.release();
 }
 
 
@@ -283,6 +324,7 @@ void AirLink::initNetWork()
 //    connect(client, SIGNAL(connected()), this, SLOT(sendToHud()));
     connect(client, SIGNAL(disconnected()), this, SLOT(disConnected()));
 }
+
 
 void AirLink::emitRefreshSmallTurn()
 {

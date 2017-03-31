@@ -5,7 +5,7 @@ Rectangle {
     opacity: 0.0
     property int rpm: 1000
     property int rpmAngleTo: 270 / 10000 * rpm
-    property int speed: 150
+    property int speed: qairlink.speed
     property real speedAngleTo: 270 / 200 * speed
     property int oil: 100
     property real oilAngleTo: 59.5 / 100 * oil
@@ -27,16 +27,57 @@ Rectangle {
         opacity: 1.0
         source: "qrc:/images/leftBg.png"
     }
-    Text {
-        id: rpmid
-        anchors.horizontalCenter: leftBg.horizontalCenter
-        anchors.top: leftBg.top
-        anchors.topMargin: 420
-        font.pixelSize: 70
+//    Text {
+//        id: rpmid
+//        anchors.horizontalCenter: leftBg.horizontalCenter
+//        anchors.top: leftBg.top
+//        anchors.topMargin: 420
+//        font.pixelSize: 70
+//        color: "white"
+//        style: Text.Outline;
+//        styleColor: "blue"
+//        text: dashboardPanel.rpm > 2000 ?(dashboardPanel.rpm/1000  - 2 ).toFixed(1) :(dashboardPanel.rpm/1000 ).toFixed(1)
+//    }
+
+    DigitValue{
+        x:270
+        y:480
+        spacing: 6
+        icon0: "qrc:/speedNum/images/speedNum/0.png"
+        icon1: "qrc:/speedNum/images/speedNum/1.png"
+        icon2: "qrc:/speedNum/images/speedNum/2.png"
+        icon3: "qrc:/speedNum/images/speedNum/3.png"
+        icon4: "qrc:/speedNum/images/speedNum/4.png"
+        icon5: "qrc:/speedNum/images/speedNum/5.png"
+        icon6: "qrc:/speedNum/images/speedNum/6.png"
+        icon7: "qrc:/speedNum/images/speedNum/7.png"
+        icon8: "qrc:/speedNum/images/speedNum/8.png"
+        icon9: "qrc:/speedNum/images/speedNum/9.png"
+        value:dashboardPanel.rpm > 2000 ?Math.floor(dashboardPanel.rpm/1000  - 2 ) :Math.floor(dashboardPanel.rpm/1000 )
+    }
+    Rectangle{
+        x:332
+        y:510
+        height: 8
+        width: 8
+        radius: 4
         color: "white"
-        style: Text.Outline;
-        styleColor: "blue"
-        text: dashboardPanel.rpm > 2000 ?(dashboardPanel.rpm/1000  - 2 ).toFixed(1) :(dashboardPanel.rpm/1000 ).toFixed(1)
+    }
+    DigitValue{
+        x:349
+        y:480
+        spacing: 8
+        icon0: "qrc:/speedNum/images/speedNum/0.png"
+        icon1: "qrc:/speedNum/images/speedNum/1.png"
+        icon2: "qrc:/speedNum/images/speedNum/2.png"
+        icon3: "qrc:/speedNum/images/speedNum/3.png"
+        icon4: "qrc:/speedNum/images/speedNum/4.png"
+        icon5: "qrc:/speedNum/images/speedNum/5.png"
+        icon6: "qrc:/speedNum/images/speedNum/6.png"
+        icon7: "qrc:/speedNum/images/speedNum/7.png"
+        icon8: "qrc:/speedNum/images/speedNum/8.png"
+        icon9: "qrc:/speedNum/images/speedNum/9.png"
+        value:((dashboardPanel.rpm%1000)/100)
     }
 
     Item{
@@ -78,7 +119,7 @@ Rectangle {
             origin.x: 332 - rpmPoint.x
             origin.y: 372 - rpmPoint.y
             angle:{
-//                console.log(rpmAngleTo)
+                //                console.log(rpmAngleTo)
                 return -135 + rpmAngleTo
             }
         }
@@ -92,17 +133,35 @@ Rectangle {
         opacity: 1.0
         source: "qrc:/images/rightBg.png"
     }
-    Text {
-        id: speedid
-        anchors.horizontalCenter: rightBg.horizontalCenter
-        anchors.top: rightBg.top
-        anchors.topMargin: 400
-        font.pixelSize: 70
-        color: "white"
-        style: Text.Outline; styleColor: "blue"
-        text: dashboardPanel.speed
-    }
+    //    Text {
+    //        id: speedid
+    //        anchors.horizontalCenter: rightBg.horizontalCenter
+    //        anchors.top: rightBg.top
+    //        anchors.topMargin: 400
+    //        font.pixelSize: 70
+    //        color: "white"
+    //        style: Text.Outline; styleColor: "blue"
+    //        text: dashboardPanel.speed
+    //    }
 
+    DigitValue{
+        anchors.horizontalCenter: rightBg.horizontalCenter
+        anchors.horizontalCenterOffset: 5
+        anchors.top: rightBg.top
+        anchors.topMargin: 425
+        spacing: 5
+        icon0: "qrc:/speedNum/images/speedNum/0.png"
+        icon1: "qrc:/speedNum/images/speedNum/1.png"
+        icon2: "qrc:/speedNum/images/speedNum/2.png"
+        icon3: "qrc:/speedNum/images/speedNum/3.png"
+        icon4: "qrc:/speedNum/images/speedNum/4.png"
+        icon5: "qrc:/speedNum/images/speedNum/5.png"
+        icon6: "qrc:/speedNum/images/speedNum/6.png"
+        icon7: "qrc:/speedNum/images/speedNum/7.png"
+        icon8: "qrc:/speedNum/images/speedNum/8.png"
+        icon9: "qrc:/speedNum/images/speedNum/9.png"
+        value:dashboardPanel.speed
+    }
 
     Item{
         id: speedBarBg
@@ -342,7 +401,7 @@ Rectangle {
         x: 743
         y: 267
         opacity: qairlink.carInfo_flag === false ? 0.0: 1.0
-        source: "qrc:/images/carInfo.png"
+        source: "qrc:/images/carINfo.png"
     }
     Image {
         id: samllTrip
@@ -379,61 +438,61 @@ Rectangle {
                 NumberAnimation { target: dashboardPanel; property: "opacity"; to: 1.0; duration: 100; }
                 SequentialAnimation{
                     ParallelAnimation{
-                        NumberAnimation { target: dashboardPanel; property: "speed"; to: 200; duration: 800; }
-                        NumberAnimation { target: dashboardPanel; property: "rpm"; to: 8000; duration: 600; }
+                        NumberAnimation { target: dashboardPanel; property: "speed"; to: 200; duration: 500; }
+                        NumberAnimation { target: dashboardPanel; property: "rpm"; to: 8000; duration: 400; }
                     }
                     ParallelAnimation{
-                        NumberAnimation { target: dashboardPanel; property: "speed"; to: 0; duration: 800; }
-                        NumberAnimation { target: dashboardPanel; property: "rpm"; to: /*12*/0; duration: 600; }
+                        NumberAnimation { target: dashboardPanel; property: "speed"; to: 0; duration: 500; }
+                        NumberAnimation { target: dashboardPanel; property: "rpm"; to: /*12*/0; duration: 400; }
                     }
                     ParallelAnimation{
                         NumberAnimation { target: dashboardPanel; property: "speed"; to: 100; duration: 500; }
-                        NumberAnimation { target: dashboardPanel; property: "rpm"; to: 5000; duration: 1000; }
+                        NumberAnimation { target: dashboardPanel; property: "rpm"; to: 4900; duration: 400; }
                     }
                     ParallelAnimation{
-                        NumberAnimation { target: dashboardPanel; property: "speed"; to: 80; duration: 1000; }
+//                        NumberAnimation { target: dashboardPanel; property: "speed"; to: 80; duration: 1000; }
                         NumberAnimation { target: dashboardPanel; property: "rpm"; to: 4000; duration: 800; }
                     }
                     ParallelAnimation{
-                        NumberAnimation { target: dashboardPanel; property: "speed"; to: 90; duration: 1000; }
-                        NumberAnimation { target: dashboardPanel; property: "rpm"; to: 5000; duration: 1000; }
+//                        NumberAnimation { target: dashboardPanel; property: "speed"; to: 90; duration: 1000; }
+                        NumberAnimation { target: dashboardPanel; property: "rpm"; to: 4900; duration: 1000; }
                     }
                     ParallelAnimation{
-                        NumberAnimation { target: dashboardPanel; property: "speed"; to: 100; duration: 1000; }
+//                        NumberAnimation { target: dashboardPanel; property: "speed"; to: 100; duration: 1000; }
                     }
                     ParallelAnimation{
-                        NumberAnimation { target: dashboardPanel; property: "speed"; to: 118; duration: 1000; }
+//                        NumberAnimation { target: dashboardPanel; property: "speed"; to: 120; duration: 1000; }
                     }
 
                     SequentialAnimation{
                         loops: Animation.Infinite
                         ParallelAnimation{
-                            NumberAnimation { target: dashboardPanel; property: "speed"; from: 118;to: 120; duration: 1000; }
-                            NumberAnimation { target: dashboardPanel; property: "rpm"; from:5000;to: 4500; duration: 1000; }
+//                            NumberAnimation { target: dashboardPanel; property: "speed"; from: 120;to: 120; duration: 1000; }
+                            NumberAnimation { target: dashboardPanel; property: "rpm"; from:4900;to: 4500; duration: 1000; }
                         }
                         ParallelAnimation{
-                            NumberAnimation { target: dashboardPanel; property: "speed"; to: 110; duration: 1000; }
+//                            NumberAnimation { target: dashboardPanel; property: "speed"; to: 126; duration: 1000; }
                             NumberAnimation { target: dashboardPanel; property: "rpm"; to: 4800; duration: 1000; }
                         }
                         ParallelAnimation{
-                            NumberAnimation { target: dashboardPanel; property: "speed"; to: 115; duration: 1000; }
-                            NumberAnimation { target: dashboardPanel; property: "rpm"; to: 5000; duration: 1000; }
+//                            NumberAnimation { target: dashboardPanel; property: "speed"; to: 128; duration: 1000; }
+                            NumberAnimation { target: dashboardPanel; property: "rpm"; to: 4900; duration: 1000; }
                         }
                         ParallelAnimation{
-                            NumberAnimation { target: dashboardPanel; property: "speed"; to: 118; duration: 1000; }
+//                            NumberAnimation { target: dashboardPanel; property: "speed"; to: 126; duration: 1000; }
                             NumberAnimation { target: dashboardPanel; property: "rpm"; to: 4600; duration: 1000; }
                         }
                         ParallelAnimation{
-                            NumberAnimation { target: dashboardPanel; property: "speed"; to: 110; duration: 1000; }
+//                            NumberAnimation { target: dashboardPanel; property: "speed"; to: 128; duration: 1000; }
                             NumberAnimation { target: dashboardPanel; property: "rpm"; to: 4300; duration: 1000; }
                         }
                         ParallelAnimation{
-                            NumberAnimation { target: dashboardPanel; property: "speed"; to: 115; duration: 1000; }
+//                            NumberAnimation { target: dashboardPanel; property: "speed"; to: 124; duration: 1000; }
                             NumberAnimation { target: dashboardPanel; property: "rpm"; to: 4600; duration: 1000; }
                         }
                         ParallelAnimation{
-                            NumberAnimation { target: dashboardPanel; property: "speed"; to: 118; duration: 1000; }
-                            NumberAnimation { target: dashboardPanel; property: "rpm"; to: 5000; duration: 1000; }
+//                            NumberAnimation { target: dashboardPanel; property: "speed"; to: 120; duration: 1000; }
+                            NumberAnimation { target: dashboardPanel; property: "rpm"; to: 4900; duration: 1000; }
                         }
                     }
                 }

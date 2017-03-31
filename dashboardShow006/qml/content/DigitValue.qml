@@ -35,6 +35,7 @@ Row {
 		num1 = value % 10;
 	}
 
+
 	Image {
 		id: num6Image
 		visible: showNum == 6 ? true :

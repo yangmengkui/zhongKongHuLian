@@ -47,6 +47,7 @@
         <file>images/xuhang .png</file>
         <file>images/samllTrip.png</file>
         <file>images/totalTrip.png</file>
+        <file>images/carINfo.png</file>
     </qresource>
     <qresource prefix="/speedNum">
         <file>images/speedNum/0.png</file>

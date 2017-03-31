@@ -408,6 +408,7 @@ build/qrc_show005.cpp: show005.qrc \
 		images/totalTrip.png \
 		images/tempure.png \
 		images/midBg.png \
+		images/carINfo.png \
 		images/gearN.png \
 		images/time.png \
 		images/rpmBar.png \

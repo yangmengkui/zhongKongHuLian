@@ -14,6 +14,7 @@
 #include "serial.h"
 #include <QObject>
 #include "changepicsmallturn.h"
+#include <QSemaphore>
 
 #ifdef SERIAL_MODE
 class AirLink : public QObject
@@ -75,11 +76,15 @@ protected slots:
     void sendToHud();
     void initNetWork();
 
+    void speedChangedSlot();
+
     void serialReadyread();
 
      void emitRefreshSmallTurn();//small pics更新图片,normal
 
 private:
+    QSemaphore sendToHudC;
+
     QLabel *ql_show;
 
 
@@ -109,6 +114,9 @@ private:
 
     bool m_carInfo_flag;
     u_int8_t flagCount;
+    bool flagSpeed;
+    bool speedFlag_100_126;
+    u_int8_t flagSpeedPause_2s;
 
 
     infoType flagInfoType;
